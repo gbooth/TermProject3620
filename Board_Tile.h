@@ -21,17 +21,17 @@ class Board_Tile {
 
     int numMoves() const;
     int Manhattan_Distance(const Board_Tile&);
+    int Manhattan_Distance();
 
     Board_Tile move(moveDir, int) const;
     unsigned int findTile(char) const;
 
   private:
     std::string config;
+    std::string movesFromStart;
 
     std::string goalConfig;
-    unsigned int manDist[9];
-    int manDistSum = -1;
-    std::string movesFromStart;
+    int manDistSum;
 };
 
 #endif

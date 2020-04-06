@@ -7,9 +7,10 @@
 #include <string>
 #include <iostream>
 #include <cstdlib>
+#include <utility>
 
 Board_Tile::Board_Tile(const std::string& conf, const std::string& moves, const std::string& goal) : 
-  config{conf}, movesFromStart{moves}, goalConfig{goal} {}
+  config{conf}, movesFromStart{moves}, goalConfig{goal}, manDistSum{-1} {}
 
 std::list <Board_Tile> Board_Tile::nextConfigs() {
     unsigned int i = this->findTile('0');
@@ -87,10 +88,24 @@ int Board_Tile::Manhattan_Distance(const Board_Tile& goal) {
     for(int i = 0; i < 9; i++) {
         key = config[i];
         tileGoal = goal.findTile(key);
-        manDist[(int)key] = abs(i%3 - tileGoal%3) + abs(i/3 - tileGoal/3);
+        total += abs(i%3 - tileGoal%3) + abs(i/3 - tileGoal/3);
     }
-    for(int i = 0; i < 9; i++)
-        total += manDist[i];
+    return total;
+}
+
+int Board_Tile::Manhattan_Distance() {
+    char key;
+    int tileGoal;
+    int total = 0;
+    for(int i = 0; i < 9; i++) {
+        key = config[i];
+        for(int j = 0; j < 9; j++) 
+            if(goalConfig[j] == key) {
+                tileGoal = j;
+                break;
+            }
+        total += abs(i%3 - tileGoal%3) + abs(i/3 - tileGoal/3);
+    }
     return total;
 }
 
@@ -98,10 +113,71 @@ Board_Tile Board_Tile::move(moveDir dir, int emptyLoc) const {
     switch(dir) {
         case U : {
             assert(emptyLoc != 0 && 1 && 2);
-            
+            std::cout << "This has config - " << config << std::endl
+                      << "This has moves  - " << movesFromStart << std::endl
+                      << "This has goal   - " << goalConfig << std::endl
+                      << "This has manDis - " << manDistSum << std::endl;
+            Board_Tile mv = *this;
+            std::cout << "Mv has config - " << mv.config << std::endl
+                      << "Mv has moves  - " << mv.movesFromStart << std::endl
+                      << "Mv has goal   - " << mv.goalConfig << std::endl
+                      << "Mv has manDis - " << mv.manDistSum << std::endl;
+            std::swap(mv.config[emptyLoc], mv.config[emptyLoc - 3]);
+            mv.manDistSum = mv.Manhattan_Distance();
+            mv.movesFromStart += "U";
+            return mv;
+        }
+        case L : {
+            assert(emptyLoc != 0 && 3 && 6);
+            std::cout << "This has config - " << config << std::endl
+                      << "This has moves  - " << movesFromStart << std::endl
+                      << "This has goal   - " << goalConfig << std::endl
+                      << "This has manDis - " << manDistSum << std::endl << std::endl;
+            Board_Tile mv = *this;
+            std::cout << "Mv has config - " << mv.config << std::endl
+                      << "Mv has moves  - " << mv.movesFromStart << std::endl
+                      << "Mv has goal   - " << mv.goalConfig << std::endl
+                      << "Mv has manDis - " << mv.manDistSum << std::endl << std::endl;
+            std::swap(mv.config[emptyLoc], mv.config[emptyLoc - 1]);
+            mv.manDistSum = mv.Manhattan_Distance();
+            mv.movesFromStart += "L";
+            return mv;
+        }
+        case D : {
+            assert(emptyLoc != 6 && 7 && 8);
+            std::cout << "This has config - " << config << std::endl
+                      << "This has moves  - " << movesFromStart << std::endl
+                      << "This has goal   - " << goalConfig << std::endl
+                      << "This has manDis - " << manDistSum << std::endl;
+            Board_Tile mv = *this;
+            std::cout << "Mv has config - " << mv.config << std::endl
+                      << "Mv has moves  - " << mv.movesFromStart << std::endl
+                      << "Mv has goal   - " << mv.goalConfig << std::endl
+                      << "Mv has manDis - " << mv.manDistSum << std::endl;
+            std::swap(mv.config[emptyLoc], mv.config[emptyLoc + 3]);
+            mv.manDistSum = mv.Manhattan_Distance();
+            mv.movesFromStart += "D";
+            return mv;
+        }
+        case R : {
+            assert(emptyLoc != 2 && 5 && 8);
+            std::cout << "This has config - " << config << std::endl
+                      << "This has moves  - " << movesFromStart << std::endl
+                      << "This has goal   - " << goalConfig << std::endl
+                      << "This has manDis - " << manDistSum << std::endl;
+            Board_Tile mv = *this;
+            std::cout << "Mv has config - " << mv.config << std::endl
+                      << "Mv has moves  - " << mv.movesFromStart << std::endl
+                      << "Mv has goal   - " << mv.goalConfig << std::endl
+                      << "Mv has manDis - " << mv.manDistSum << std::endl;
+            std::swap(mv.config[emptyLoc], mv.config[emptyLoc + 1]);
+            mv.manDistSum = mv.Manhattan_Distance();
+            mv.movesFromStart += "R";
+            return mv;
         }
     }
 }
+
 unsigned int Board_Tile::findTile(char tile) const {
     unsigned int i;
     for(i = 0; i < 9; i++)
