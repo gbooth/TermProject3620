@@ -86,7 +86,7 @@ bool Board_Tile::operator==(const Board_Tile& boardTwo) const {
 
 bool Board_Tile::betterBoard(const Board_Tile& boardTwo) const {
     if(*this == boardTwo)
-        return *this < boardTwo;
+        return !(*this < boardTwo);
     else
         return false;
 }
