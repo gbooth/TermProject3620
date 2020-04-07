@@ -8,8 +8,9 @@
 #include <iostream>
 
 int main () {
-    Board_Tile test("123405678");
+    Board_Tile test("123405678", "This is a test string", "123456780");
 
     test = test.move(U, 4);
+    test.output();
     return 0;
 }

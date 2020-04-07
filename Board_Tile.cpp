@@ -187,3 +187,10 @@ unsigned int Board_Tile::findTile(char tile) const {
     assert(false);
     return -1;
 }
+
+void Board_Tile::output() const {
+    std::cout << "Mv has config - " << config << std::endl
+              << "Mv has moves  - " << movesFromStart << std::endl
+              << "Mv has goal   - " << goalConfig << std::endl
+              << "Mv has manDis - " << manDistSum << std::endl;
+}

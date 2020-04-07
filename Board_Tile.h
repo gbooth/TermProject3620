@@ -26,6 +26,7 @@ class Board_Tile {
     Board_Tile move(moveDir, int) const;
     unsigned int findTile(char) const;
 
+    void output() const;
   private:
     std::string config;
     std::string movesFromStart;
