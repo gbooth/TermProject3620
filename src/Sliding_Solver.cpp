@@ -52,7 +52,10 @@ std::string Sliding_Solver::Solve_Puzzle() {
             return tileQueue.top().getMoves();
         current = tileQueue.top();
     }
-    return "Loop exited. Either too many moves or something dun messed up the queue.";
+    if(tileQueue.empty())
+        std::cout << "Tile Queue empty";
+    std::cout << "Loop exited. Move count --" << tileQueue.top().numMoves();
+    return tileQueue.top().getMoves();
 }
 
 std::list<Board_Tile>::const_iterator Sliding_Solver::contains(const Board_Tile& key) const {

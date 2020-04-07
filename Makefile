@@ -1,6 +1,6 @@
 CCC=g++
 
-CCCFLAGS= -g -std=c++11 #-lX11
+CCCFLAGS= -g -std=c++11 -lX11
 
 SRC_INCLUDE = include
 INCLUDE = -I $(SRC_INCLUDE)
