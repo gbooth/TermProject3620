@@ -14,10 +14,15 @@ enum moveDir {U, L, D, R};
 
 class Board_Tile {
   public:
-    Board_Tile(const std::string&, const std::string& = "", const std::string& = "");
+    Board_Tile(const std::string&, const std::string& = "");
 
-    std::list <Board_Tile> nextConfigs();
+    std::list<Board_Tile> nextConfigs() const;
     bool operator<(const Board_Tile&) const;
+    bool operator==(const Board_Tile&) const;
+
+    bool betterBoard(const Board_Tile&) const;
+    bool isSolution() const;
+    std::string getMoves() const;
 
     int numMoves() const;
     int Manhattan_Distance(const Board_Tile&);
@@ -26,7 +31,7 @@ class Board_Tile {
     Board_Tile move(moveDir, int) const;
     unsigned int findTile(char) const;
 
-    void output() const;
+    void output(std::string) const;
   private:
     std::string config;
     std::string movesFromStart;

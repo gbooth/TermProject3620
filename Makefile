@@ -7,7 +7,7 @@ all : SlidePuzzle
 SlidePuzzle : main.o Board_Tile.o
 	$(CCC) $(CCCFLAGS) $^ -o $@
 
-%.o : %.cc
+%.o : %.cpp
 	$(CCC) -c $(CCCFLAGS) $<
 
 main.o : Board_Tile.h

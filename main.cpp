@@ -3,14 +3,13 @@
  * @date 2020-04-06
  */
 
-#include "Board_Tile.h"
+#include "Sliding_Solver.h"
 #include <string>
 #include <iostream>
 
 int main () {
-    Board_Tile test("123405678", "This is a test string", "123456780");
-
-    test = test.move(U, 4);
-    test.output();
+    Sliding_Solver test("123745086", "123456780");
+    std::cout << test.Solve_Puzzle();
+    
     return 0;
 }
