@@ -7,7 +7,7 @@
 #include <queue>
 #include <cassert>
 
-Sliding_Solver::Sliding_Solver(const std::string& startConfig, const std::string& goal) {
+Sliding_Solver::Sliding_Solver(std::string& startConfig, std::string& goal) {
     Board_Tile start(startConfig, goal);
     initialBoard = &start;
     start.Manhattan_Distance();
