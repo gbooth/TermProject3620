@@ -54,11 +54,12 @@ std::string Sliding_Solver::Solve_Puzzle() {
             possibleMoves.pop_front();
         }
         boardInQueue.remove(current);
-        if(tileQueue.top().isSolution())
+        if(tileQueue.top().isSolution()) {
             for(int i = 0; i < 5; i++)
                 std::cout << "SOLUTION HAS BEEN FOUND\n";
             std::cout << "\n\n";
             return tileQueue.top().getMoves();
+        }
         current = tileQueue.top();
         std::cout << "Solution not found. Obtaining new list of possibles\n\n";
         current.output("Current");
