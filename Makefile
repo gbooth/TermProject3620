@@ -13,4 +13,4 @@ SlidePuzzle : main.o Board_Tile.o
 main.o : Board_Tile.h
 
 clean:
-	rm -f *.o *~ *% *# .#* similar
+	rm -f *.o *~ *% *# .#* SlidePuzzle
