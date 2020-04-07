@@ -22,8 +22,6 @@ class Sliding_Solver {
     std::priority_queue<Board_Tile> tileQueue;
     std::list<Board_Tile> boardInQueue;
     std::list<Board_Tile> boardsExpanded;
-
-    std::list<Board_Tile>::const_iterator contains(const Board_Tile&) const;
 };
 
 #endif

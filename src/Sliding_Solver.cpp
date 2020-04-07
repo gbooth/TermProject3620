@@ -21,15 +21,18 @@ std::string Sliding_Solver::Solve_Puzzle() {
     if(tileQueue.top().isSolution())
         return tileQueue.top().getMoves();
     Board_Tile current = tileQueue.top();
+    current.output("Current");
     while(tileQueue.top().numMoves() < 32 && !tileQueue.empty()) {
         std::list<Board_Tile> possibleMoves = tileQueue.top().nextConfigs();
         boardsExpanded.push_back(tileQueue.top());
         tileQueue.pop();
         assert(possibleMoves.size() <= 4);
         while(!possibleMoves.empty()) {
-            //auto it = this->contains(possibleMoves.front());
+            possibleMoves.front().output("Front of possible list");
             auto it = std::find(boardInQueue.begin(), boardInQueue.end(), possibleMoves.front());
             if(it != boardInQueue.end()) {
+                std::cout << "Possible board found in current queue list\n\n";
+                it->output("Matching board to possible");
                 if(possibleMoves.front().betterBoard(*it)) {
                     boardInQueue.erase(it);
                     boardInQueue.push_back(possibleMoves.front());
@@ -53,11 +56,7 @@ std::string Sliding_Solver::Solve_Puzzle() {
         current = tileQueue.top();
     }
     if(tileQueue.empty())
-        std::cout << "Tile Queue empty";
-    std::cout << "Loop exited. Move count --" << tileQueue.top().numMoves();
+        std::cout << "Tile Queue empty\n\n";
+    std::cout << "Loop exited. Move count --" << tileQueue.top().numMoves() << std::endl << std::endl;
     return tileQueue.top().getMoves();
-}
-
-std::list<Board_Tile>::const_iterator Sliding_Solver::contains(const Board_Tile& key) const {
-    return std::find(boardInQueue.begin(), boardInQueue.end(), key);
 }
