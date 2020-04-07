@@ -11,7 +11,8 @@ SlidePuzzle : main.o Sliding_Solver.o
 	$(CCC) -c $(CCCFLAGS) $<
 
 main.o : Sliding_Solver.h
-Sliding_Solver.o : Board_Tile.h
+Sliding_Solver.o : Sliding_Solver.h Board_Tile.o
+Board_Tile.o : Board_Tile.h
 
 clean:
 	rm -f *.o *~ *% *# .#* SlidePuzzle

@@ -4,6 +4,7 @@
  */
 
 #include "Sliding_Solver.h"
+#include "Board_Tile.h"
 #include <queue>
 #include <cassert>
 #include <algorithm>
