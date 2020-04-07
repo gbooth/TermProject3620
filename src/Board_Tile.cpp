@@ -77,7 +77,7 @@ std::list <Board_Tile> Board_Tile::nextConfigs() const {
 
 bool Board_Tile::operator<(const Board_Tile& boardTwo) const {
     assert(manDistSum != -1 && boardTwo.manDistSum != -1);
-    return this->manDistSum + movesFromStart.size() < boardTwo.manDistSum + boardTwo.movesFromStart.size();
+    return this->manDistSum + movesFromStart.size() > boardTwo.manDistSum + boardTwo.movesFromStart.size();
 }
 
 bool Board_Tile::operator==(const Board_Tile& boardTwo) const {

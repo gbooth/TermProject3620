@@ -8,12 +8,11 @@
 #include <iostream>
 
 int main () {
-    /*std::string initial = "123745086";
-    std::string goal = "123456780";
-    Sliding_Solver test(initial, goal);
-    std::cout << test.Solve_Puzzle();*/
+    std::string initial = "123745086";
+    Sliding_Solver test(initial);
+    std::cout << test.Solve_Puzzle();
 
-    Board_Tile test1("023145786", "UU");
+/*    Board_Tile test1("023145786", "UU");
     Board_Tile test2("123405786", "UR");
 
     test1.Manhattan_Distance();
@@ -23,6 +22,6 @@ int main () {
         std::cout << "test1 is smaller than test2 and I dun fked up\n\n";
     else
         std::cout << "test2 is smaller and that is correct\n\n";
-    
+*/    
     return 0;
 }
