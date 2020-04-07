@@ -6,6 +6,7 @@
 #include "Sliding_Solver.h"
 #include <queue>
 #include <cassert>
+#include <algorithm>
 
 Sliding_Solver::Sliding_Solver(const std::string& startConfig, const std::string& goal) {
     Board_Tile start(startConfig, goal);
