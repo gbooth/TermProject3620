@@ -4,13 +4,14 @@ CCCFLAGS= -g -std=c++11 -lX11
 
 all : SlidePuzzle
 
-SlidePuzzle : main.o Board_Tile.o
+SlidePuzzle : main.o Sliding_Solver.o
 	$(CCC) $(CCCFLAGS) $^ -o $@
 
 %.o : %.cpp
 	$(CCC) -c $(CCCFLAGS) $<
 
-main.o : Board_Tile.h
+main.o : Sliding_Solver.h
+Sliding_Solver.o : Board_Tile.h
 
 clean:
 	rm -f *.o *~ *% *# .#* SlidePuzzle
