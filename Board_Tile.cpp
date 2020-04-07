@@ -8,6 +8,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <utility>
+#include <cassert>
 
 Board_Tile::Board_Tile(const std::string& conf, const std::string& moves, const std::string& goal) : 
   config{conf}, movesFromStart{moves}, goalConfig{goal}, manDistSum{-1} {}
