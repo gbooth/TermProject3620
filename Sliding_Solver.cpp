@@ -26,7 +26,8 @@ std::string Sliding_Solver::Solve_Puzzle() {
         tileQueue.pop();
         assert(possibleMoves.size() <= 4);
         while(!possibleMoves.empty()) {
-            auto it = this->contains(possibleMoves.front());
+            //auto it = this->contains(possibleMoves.front());
+            auto it = std::find(boardInQueue.begin(), boardInQueue.end(), possibleMoves.front());
             if(it != boardInQueue.end()) {
                 if(possibleMoves.front().betterBoard(*it)) {
                     boardInQueue.erase(it);
