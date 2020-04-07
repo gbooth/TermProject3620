@@ -8,20 +8,24 @@
 #include <iostream>
 
 int main () {
-    std::string initial = "436871052";
-    Sliding_Solver test(initial);
-    std::cout << test.Solve_Puzzle();
+    std::string initial;
+    std::string goal;
+    std::string solution;
+    bool GOAL_FLAG = false;
 
-/*    Board_Tile test1("023145786", "UU");
-    Board_Tile test2("123405786", "UR");
+    std::cout << "Welcome to my 8-puzzle solver\n\n"
+              << "Input your desired start input as a string, reading top to bottom, left to right\n only use digits 0 to 8--";
+    std::cin >> initial;
+    std::cout << "Enter your goal state in the same fashion.\nEnter 'd' to select the default goal of 123456780--";
+    std::cin >> goal;
+    if(goal == "d")
+        goal = "123456780";
+    Sliding_Solver solve(initial, goal);
+    solution = solve.Solve_Puzzle();
 
-    test1.Manhattan_Distance();
-    test2.Manhattan_Distance();
-
-    if(test1 < test2)
-        std::cout << "test1 is smaller than test2 and I dun fked up\n\n";
-    else
-        std::cout << "test2 is smaller and that is correct\n\n";
-*/    
+    std::cout << "Initial config -- " << initial << "\n\n"
+              << "Goal config -- " << goal << "\n\n"
+              << "Number of moves -- " << solution.size() << "\n\n"
+              << "Solution -- " << solution << "\n\n";
     return 0;
 }
