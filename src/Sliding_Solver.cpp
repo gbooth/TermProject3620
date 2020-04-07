@@ -57,6 +57,8 @@ std::string Sliding_Solver::Solve_Puzzle() {
         if(tileQueue.top().isSolution())
             return tileQueue.top().getMoves();
         current = tileQueue.top();
+        std::cout << "Solution not found. Obtaining new list of possibles\n\n";
+        current.output("Current");
     }
     if(tileQueue.empty())
         std::cout << "Tile Queue empty\n\n";
