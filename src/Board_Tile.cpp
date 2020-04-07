@@ -126,6 +126,7 @@ int Board_Tile::Manhattan_Distance() {
             }
         total += abs(i%3 - tileGoal%3) + abs(i/3 - tileGoal/3);
     }
+    manDistSum = total;
     return total;
 }
 
@@ -179,5 +180,5 @@ void Board_Tile::output(std::string name) const {
     std::cout << name << " has config - " << config << std::endl
               << name << " has moves  - " << movesFromStart << std::endl
               << name << " has goal   - " << goalConfig << std::endl
-              << name << " has manDis - " << manDistSum << std::endl;
+              << name << " has manDis - " << manDistSum << std::endl << std::endl;
 }

@@ -36,16 +36,19 @@ std::string Sliding_Solver::Solve_Puzzle() {
                 if(possibleMoves.front().betterBoard(*it)) {
                     boardInQueue.erase(it);
                     boardInQueue.push_back(possibleMoves.front());
+                    std::cout << "replacing queue\n\n";
                     std::priority_queue<Board_Tile> replacementQueue;
                     for(auto j : boardInQueue)
                         replacementQueue.push(j);
                     tileQueue.swap(replacementQueue);
                     continue;
                 } else {
+                    std::cout << "Discarding new duplicate\n\n";
                     possibleMoves.pop_front();
                     continue;
                 }
             }
+            std::cout << "Adding new possible to queue\n\n";
             boardInQueue.push_back(possibleMoves.front());
             tileQueue.push(possibleMoves.front());
             possibleMoves.pop_front();
