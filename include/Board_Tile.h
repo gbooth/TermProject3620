@@ -14,8 +14,7 @@ enum moveDir {U, L, D, R};
 
 class Board_Tile {
   public:
-//    Board_Tile(const std::string&, const std::string& = "");
-    Board_Tile(const std::string&, const std::string& = "", const std::string& = "123456780");
+    Board_Tile(const std::string&, const std::string& = "123456780");
     std::list<Board_Tile> nextConfigs() const;
     bool operator<(const Board_Tile&) const;
     bool operator==(const Board_Tile&) const;
