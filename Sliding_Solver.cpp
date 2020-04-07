@@ -25,7 +25,7 @@ std::string Sliding_Solver::Solve_Puzzle() {
         tileQueue.pop();
         assert(possibleMoves.size() <= 4);
         while(!possibleMoves.empty()) {
-            auto it = std::find(boardInQueue.begin(), boardInQueue.end(), possibleMoves.front());
+            auto it = this->contains(possibleMoves.front());
             if(it != boardInQueue.end()) {
                 if(possibleMoves.front().betterBoard(*it)) {
                     boardInQueue.erase(it);
@@ -50,4 +50,8 @@ std::string Sliding_Solver::Solve_Puzzle() {
         current = tileQueue.top();
     }
     return "Loop exited. Either too many moves or something dun messed up the queue.";
+}
+
+std::list<Board_Tile>::const_iterator Sliding_Solver::contains(const Board_Tile& key) const {
+    return std::find(boardInQueue.begin(), boardInQueue.end(), key);
 }
