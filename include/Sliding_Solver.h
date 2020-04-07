@@ -15,7 +15,7 @@
 
 class Sliding_Solver {
   public:
-    Sliding_Solver(const std::string&, const std::string& = "");
+    Sliding_Solver(const std::string&, const std::string& = "123456780");
     std::string Solve_Puzzle();
   private:
     Board_Tile* initialBoard;
