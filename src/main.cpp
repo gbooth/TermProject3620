@@ -8,7 +8,7 @@
 #include <iostream>
 
 int main () {
-    std::string initial = "123745086";
+    std::string initial = "463871052";
     Sliding_Solver test(initial);
     std::cout << test.Solve_Puzzle();
 
